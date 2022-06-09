@@ -492,8 +492,6 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(SolutionDir)$(Platform)\$(Configuration)\ResizableLib.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(SolutionDir)$(Platform)\$(Configuration)</AssemblerListingLocation>
-      <ProgramDataBaseFileName>
-      </ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
