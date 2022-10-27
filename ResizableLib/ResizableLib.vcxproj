@@ -116,9 +116,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
-    <CharacterSet>NotSet</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -521,8 +521,7 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>.\Debug_Static/ResizableLib.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\Debug_Static/</AssemblerListingLocation>
-      <ObjectFileName>.\Debug_Static/</ObjectFileName>
-      <ProgramDataBaseFileName>.\Debug_Static/</ProgramDataBaseFileName>
+      <ObjectFileName>.\Debug_Static</ObjectFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -550,7 +549,7 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(SolutionDir)$(Platform)\$(Configuration)\ResizableLib.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(SolutionDir)$(Platform)\$(Configuration)</AssemblerListingLocation>
-      <ProgramDataBaseFileName>$(SolutionDir)$(Platform)\$(Configuration)</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)$(Platform)\$(Configuration)\ResizableLib.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
