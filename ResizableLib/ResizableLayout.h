@@ -138,9 +138,9 @@ class CResizableLayout
 private:
 	//@{
 	//! @brief Collection of layout settings for each control
-	CMap<HWND, HWND, POSITION, POSITION> m_mapLayout;
-	CList<LAYOUTINFO, LAYOUTINFO&> m_listLayout;
-	CList<LAYOUTINFO, LAYOUTINFO&> m_listLayoutCB;
+	mutable CMap<HWND, HWND, POSITION, POSITION> m_mapLayout;
+	mutable CList<LAYOUTINFO, LAYOUTINFO&> m_listLayout;
+	mutable CList<LAYOUTINFO, LAYOUTINFO&> m_listLayoutCB;
 	//@}
 
 	//@{
@@ -161,6 +161,9 @@ private:
 	//! @brief Helper function to calculate new layout
 	void CalcNewChildPosition(const LAYOUTINFO &layout,
 		const CRect &rectParent, CRect &rectChild, UINT *lpFlags) const;
+
+	//! @brief Remove anchors whose HWND is no longer valid
+	void CleanupInvalidAnchors() const;
 
 protected:
 	//! @brief Override to initialize resize properties (clipping, refresh)
