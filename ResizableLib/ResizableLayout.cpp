@@ -72,6 +72,8 @@ void CResizableLayout::AddAnchor(HWND hWnd, ANCHOR anchorTopLeft, ANCHOR anchorB
 {
 	CWnd* pParent = GetResizableWnd();
 
+	CleanupInvalidAnchors();
+
 	// child window must be valid
 	ASSERT(::IsWindow(hWnd));
 	// must be child of parent window
@@ -114,6 +116,35 @@ void CResizableLayout::AddAnchor(HWND hWnd, ANCHOR anchorTopLeft, ANCHOR anchorB
 	// add to the list and the map
 	pos = m_listLayout.AddTail(layout);
 	m_mapLayout.SetAt(hWnd, pos);
+}
+
+/*!
+ *  Remove anchors with invalid HWNDs to avoid stale entries in the layout cache.
+ */
+void CResizableLayout::CleanupInvalidAnchors() const
+{
+	CArray<HWND, HWND> deadKeys;
+	CArray<POSITION, POSITION> deadPositions;
+
+	for (POSITION posMap = m_mapLayout.GetStartPosition(); posMap != NULL; )
+	{
+		HWND hWnd = NULL;
+		POSITION posList = NULL;
+		m_mapLayout.GetNextAssoc(posMap, hWnd, posList);
+		if (!::IsWindow(hWnd))
+		{
+			deadKeys.Add(hWnd);
+			deadPositions.Add(posList);
+		}
+	}
+
+	for (INT_PTR i = 0; i < deadKeys.GetCount(); ++i)
+	{
+		POSITION posList = deadPositions[i];
+		if (posList != NULL)
+			m_listLayout.RemoveAt(posList);
+		m_mapLayout.RemoveKey(deadKeys[i]);
+	}
 }
 
 /*!
